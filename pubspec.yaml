@@ -1,6 +1,6 @@
 name: sacco
 description: Pure Dart library allowing you to easily create an HD Wallet and create, sign and send Cosmos-SDK transactions.
-version: 0.2.0
+version: 0.2.1
 homepage: https://github.com/commercionetwork/sacco.dart
 
 environment:
