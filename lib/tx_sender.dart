@@ -13,7 +13,7 @@ class TxSender {
   static Future<TransactionResult> broadcastStdTx({
     required Wallet wallet,
     required StdTx stdTx,
-    String mode = 'sync',
+    String mode = 'BROADCAST_MODE_SYNC',
     http.Client? client,
   }) async {
     client ??= http.Client();
@@ -22,7 +22,7 @@ class TxSender {
     final apiUrl = Uri.parse('${wallet.networkInfo.lcdUrl}/cosmos/tx/v1beta1/txs');
 
     // Build the request body
-    final requestBody = {'tx': stdTx.toJson(), 'mode': mode};
+    final requestBody = {'tx_bytes': stdTx.toJson(), 'mode': mode};
     final requestBodyJson = jsonEncode(requestBody);
 
     // Get the response

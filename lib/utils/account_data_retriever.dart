@@ -34,9 +34,9 @@ class AccountDataRetrieval {
     final value = json['value'] as Map<String, dynamic>;
 
     // Get the coins
-    final coins = (value['coins'] as List ?? List())
+    final coins = ((value['coins'] ?? List.filled(0, StdCoin(amount: "0", denom: "-")) as List)
         .map((coinMap) => StdCoin.fromJson(coinMap))
-        .toList();
+        .toList());
 
     final accountNumber = value['account_number'] is String
         ? value['account_number']
@@ -49,7 +49,7 @@ class AccountDataRetrieval {
     return AccountData(
       accountNumber: accountNumber,
       sequence: sequence,
-      coins: coins,
+      coins: [],
     );
   }
 }
